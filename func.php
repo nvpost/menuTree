@@ -35,6 +35,22 @@ function pdSql($sql, $one=false){
     return($data);
 
 }
-//подключаемые файлы
-//require_once $home_url.'components/mainMenu.php';
+
+
+function checkMainMenuCache($cacheName){
+    // Название кеша - каталог с количеством
+    $dataCache = new DataCache($cacheName);
+    $getDataFromCache = $dataCache->initCacheData();
+
+    if ($getDataFromCache) {
+        // Получаем кэшированные данные из кэша
+        $data = $dataCache->getCacheData();
+    } else {
+        // Исполняем этот код, если кеширование отключено или данные в кеше старые
+        $data = getMenu(0);
+        //     Обновляем данные в кэше
+        $dataCache->updateCacheData($data);
+    }
+    return $data;
+}
 

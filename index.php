@@ -25,6 +25,7 @@ function getMenu($p_id=0){
             $prod = getProducts($item['cat_id']);
             if($prod){
                 $menu[$k]['prod'] = $prod;
+                $menu[$k]['src'] = $prod['src'];
                 //$productCounter = $productCounter + count($prod);
             }else{
                 $menuItemForRemove[] = $menu[$k]['cat_id'];
@@ -58,13 +59,17 @@ function getImg($prod_id){
 }
 
 
-$root_menu = getMenu(0);
+//$root_menu = getMenu(0);
 
-if($menuItemForRemove){
-    $menuItemForRemove_list = implode(", ", $menuItemForRemove);
-    deleteCats($menuItemForRemove_list);
-    deb($menuItemForRemove_list);
-}
+
+$root_menu = checkMainMenuCache("MainMenu");
+
+
+//if($menuItemForRemove){
+//    $menuItemForRemove_list = implode(", ", $menuItemForRemove);
+//    deleteCats($menuItemForRemove_list);
+//    deb($menuItemForRemove_list);
+//}
 
 
 
