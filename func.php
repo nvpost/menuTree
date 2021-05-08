@@ -1,9 +1,9 @@
 <?php
 
-$home_url = $_SERVER['DOCUMENT_ROOT']."/sportforlive/";
+$home_url = $_SERVER['DOCUMENT_ROOT']."/setCategoryImg/";
 $sql_count = 0;
 
-require_once $home_url.'sql/sql_data_pass.php';
+require_once $home_url.'sql/sql.php';
 
 
 function deb($v, $h=0){
